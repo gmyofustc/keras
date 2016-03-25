@@ -33,8 +33,8 @@ class ComputeCosinSimilarity(Layer):
 		(batchsize, time_step, ndim) = txt.shape
 		txt = txt.dimshuffle(1, 0, 2)
 		similarities, updates = theano.scan(self._step,
-										   sequences = [txt],
-										   non_sequences = [qa]
+						    				sequences = [txt],
+						    				non_sequences = [qa]
 										   )
 		#similarities shape (time_step, batchsize)==>(batchsize, time_step)
 		similarities = similarities.reshape((time_step, batchsize))
